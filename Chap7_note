@@ -1,0 +1,76 @@
+<컬렉션>
+• 요소(element)라고 불리는 가변 개수의 객체들의 저장소
+• 객체들의 컨테이너와 같은 의미
+• 고정 크기의 배열을 다루는 어려움을 해소할 수 있음.
+• 다양한 객체를 추가, 삭제, 검색 등을 쉽게 할 수 있음.
+• 컬렉션은 제네릭 기법으로 구현
+
+<제네릭>
+• 일반화시킨 타입을 사용하여 특정 타입에 종속되지 않도록 클래스나 인터페이스, 메소드를 일반화시키는 기법
+
+<제네릭 컬렉션 활용>
+Vector<E>
+: 배열을 가변 크기로 다룰 수 있게 하고 객체의 삽입, 삭제, 이동이 쉽도록 구성한 컬렉션
+Vector 생성
+ex) Vector<Integer>v=new Vector<Integer>(3);
+- 기존 객체 생성과 달리 특정 매개변수를 지정해 줄 수 있음.
+- int, char, double 등의 기본 타입은 E에 사용할 수 없음.
+- 초기 용량이 3인 벡터 생성
+Vector 요소 삽입
+ex) v.add(Integer.valueOf(3));
+자동 박싱에 의해 int타입 값을 사용하면 자동으로 Integer 객체로 변환되어 삽입됨.
+수정하면 v.add(3); 이렇게 표현 가능.
+v.add(null); -> 벡터에 null 삽입 가능
+v.add(2,100); -> 벡터 중간에 객체 삽입 가능. 인덱스 2위치에 정수 100 삽입하는 코드
+요소 알아내기
+int I = v.get(i); -> 자동 언박싱에 의해 v.get(1)이 리턴하는 Integer 객체의 정수 값이 변수 I에 저장됨.
+벡터의 크기와 용량 알아내기
+int len = v.size() -> 벡터의 크기(요소의 개수)
+int cap = v.capacity() -> 벡터의 용량(수용 가능한 크기)
+요소 삭제
+v.remove(1); -> 인덱스 1 위치에 있는 요소 삭제
+Integer m = Integer. valueOf(100);
+v. add(m);
+v.remove(m); -> 레퍼런스 m의 요소 삭제 가능
+v.removeAllElements(); -> 모든 요소를 삭제
+
+ArrayList<E>
+• 가변 크기의 배열을 구현한 컬렉션 클래스
+ex) ArrayList<Integer> = new ArrayList<>();
+- ArrayList 주요 메서드
+
+Iterator<E>
+• 컬렉션의 순차 검색에 이용
+
+iterator() 메서드
+• 메서드 호출시 Iterator 객체 반환
+• Iterator 객체를 이용하여 index 없이 순차 검색 가능
+ex) Iterator<Integer> it = v.iterator();
+while(it.hasNext()) {
+    int n = it.next();
+    System.out.println(n);
+}
+
+HashMap<E>
+• 키(key)와 값(value)의 쌍으로 구성되는 요소를 다루는 컬렉션
+[주요 메서드]
+- put() : 요소 삽입
+- get() : 요소 검색 (값 접근의 경우 키를 이용)
+
+
+LinkedList<E>
+• 요소들을 양방향으로 연결하여 관리한다는 점 제외하고 Vector, ArrayList와 거의 같음.
+• 요소 객체는 맨 앞, 맨 뒤 또는 인덱스를 사용해 중간에 삽입 가능.
+
+Collections 클래스
+• 컬렉션에 대해 연산 수행
+• 모든 메서드는 static 타입
+• 주요 메서드
+- sort() : 컬렉션에 포함된 요소들의 정렬
+- reverse() : 요소의 순서를 반대로
+- max(), min() : 요소들의 최댓값, 최솟값
+- binarySearch() : 이진 검색
+
+제네릭 객체 생성(구체화)
+• 타입 매개 변수에 기본 타입은 사용 불가능(ex. int)
+
